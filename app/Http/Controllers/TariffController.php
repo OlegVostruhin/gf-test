@@ -11,7 +11,8 @@ use Illuminate\Http\Response;
 class TariffController extends Controller
 {
     public function __construct(private TariffRepository $repository)
-    {}
+    {
+    }
 
     public function getTariffList(): Response
     {

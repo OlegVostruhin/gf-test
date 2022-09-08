@@ -21,7 +21,12 @@ class OrderController extends Controller
     {
         try {
             $client = $this->clientService->updateOrCreate($request->phone, $request->name);
-            $this->orderService->createOrder($request->date, $request->deliveryAddress, $client->id, $request->tariffId);
+            $this->orderService->createOrder(
+                $request->date,
+                $request->deliveryAddress,
+                $client->id,
+                $request->tariffId
+            );
         } catch (TariffNotAllowedException $e) {
             return response()->json([
                 'success' => -1,
