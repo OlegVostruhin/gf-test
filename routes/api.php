@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\UrlController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\TariffController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/url', [UrlController::class, 'create']);
+Route::get('/tariffs',[TariffController::class, 'getTariffList']);
+Route::get('/tariffs/availabledates/{id}', [TariffController::class, 'getTariffAvailableDates']);
+Route::post('/order', [OrderController::class, 'create']);

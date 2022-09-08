@@ -1,4 +1,8 @@
+import VueMask from 'v-mask'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 import Notifications from 'vue-notification'
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -17,11 +21,16 @@ window.Vue = require('vue').default;
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
 Vue.component('home-component', require('./components/HomeComponent.vue').default);
+Vue.use(VueMask);
+Vue.use(Vuetify);
 Vue.use(Notifications);
+
+const opts = {
+    icons: {
+        iconfont: 'mdiSvg'
+    }
+}
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,5 +39,6 @@ Vue.use(Notifications);
  */
 
 const app = new Vue({
+    vuetify : new Vuetify(opts),
     el: '#app',
 });
